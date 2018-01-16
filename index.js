@@ -5,6 +5,7 @@
 
 function getDataFromApi(state) {
 	let requestData = {
+		format: 'json',
 		status: 'fundraising',
 		sort_by: 'amount_remaining',
 		per_page: 50
@@ -23,7 +24,6 @@ function getDataFromApi(state) {
 					console.log(currentLoan);
 				}
 			}
-			// console.log(result.loans);
 		}
 	});
 }
