@@ -10,11 +10,14 @@ let state = {
 // }
 $(document).ready(function() {
 	$('.data').click(function(event) {
-		console.log('working');
+		$(this).html('Check the console!');
 		$.ajax({
-			url: 'https://api.kivaws.org/v1/loans/newest.json',
+			url: 'https://api.kivaws.org/v1/loans/search.json',
+			data: {
+				status: 'fundraising',
+				sort_by: 'random'
+			},
 			success: function(result) {
-
 				console.log(result.loans);
 			}
 		});
