@@ -1,9 +1,9 @@
-let state = {
-	requested: -1,
-	raised: -1,
-}
+// let state = {
+// 	requested: -1,
+// 	raised: -1,
+// }
 
-function getDataFromApi() {
+function getDataFromApi(state) {
 	let requestData = {
 		status: 'fundraising',
 		sort_by: 'amount_remaining',
@@ -15,9 +15,15 @@ function getDataFromApi() {
 		success: function(result) {
 			let loans = result.loans;
 			for (let i = 0; i < loans.length; i++) {
-				let 
+				let currentLoan = loans[i];
+				let requestedLoanAmount = currentLoan.loan_amount;
+				let amountFunded = currentLoan.funded_amount;
+				let amountRemaining = requestedLoanAmount-amountFunded;
+				if (amountRemaining <= 100) {
+					console.log(currentLoan);
+				}
 			}
-			console.log(result.loans);
+			// console.log(result.loans);
 		}
 	});
 }
