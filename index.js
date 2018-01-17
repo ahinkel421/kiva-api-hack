@@ -1,7 +1,7 @@
-// let state = {
-// 	requested: -1,
-// 	raised: -1,
-// }
+let state = {
+	requested: -1,
+	raised: -1,
+}
 
 function getDataFromApi(state) {
 	let requestData = {
