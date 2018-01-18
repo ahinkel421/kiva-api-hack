@@ -1,9 +1,13 @@
 let state = {
 	requested: -1,
-	raised: -1,
-}
+	funded: -1,
+	remaining: -1,
+	name: ''
+};
 
-function getDataFromApi(state) {
+$(document).ready(function() {
+
+	function getDataFromApi(state) {
 	let requestData = {
 		format: 'json',
 		status: 'fundraising',
@@ -21,16 +25,19 @@ function getDataFromApi(state) {
 				let amountFunded = currentLoan.funded_amount;
 				let amountRemaining = requestedLoanAmount-amountFunded;
 				if (amountRemaining <= 100) {
-					console.log(currentLoan);
+					state.requested = requestedLoanAmount;
+					state.funded = amountFunded;
+					state.remaining = amountRemaining;
+					state.name = currentLoan.name;
 				}
+				console.log(`${state.name} only has $${state.remaining} left to go!`);
 			}
 		}
 	});
 }
 
-$(document).ready(function() {
 	$('.data').click(function(event) {
 		$(this).html('Check the console!');
-		getDataFromApi();
+		getDataFromApi(state);
 	});
 });
