@@ -20,10 +20,10 @@ $(document).ready(function() {
 		success: function(result) {
 			let loans = result.loans;
 			for (let i = 0; i < loans.length; i++) {
-				let currentLoan = loans[i];
-				let requestedLoanAmount = currentLoan.loan_amount;
-				let amountFunded = currentLoan.funded_amount;
-				let amountRemaining = requestedLoanAmount-amountFunded;
+				let currentLoan = loans[i],
+				requestedLoanAmount = currentLoan.loan_amount,
+				amountFunded = currentLoan.funded_amount,
+				amountRemaining = requestedLoanAmount-amountFunded;
 				if (amountRemaining <= 100) {
 					state.requested = requestedLoanAmount;
 					state.funded = amountFunded;
